@@ -1,12 +1,12 @@
 from enum import EnumMeta
 from inspect import ismethod
-import {{cookiecutter.module_name}}
+import {{cookiecutter.project_slug}}
 import pytest
 
 
-@pytest.mark.parametrize("attr", {{cookiecutter.module_name}}.__all__)
+@pytest.mark.parametrize("attr", {{cookiecutter.project_slug}}.__all__)
 def test_icons(attr):
-    fonticon = getattr({{cookiecutter.module_name}}, attr)
+    fonticon = getattr({{cookiecutter.project_slug}}, attr)
     assert isinstance(fonticon, EnumMeta)
     assert ismethod(fonticon._font_file)
     assert isinstance(fonticon._font_file(), str)

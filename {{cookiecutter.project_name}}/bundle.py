@@ -1,15 +1,9 @@
-import io
-import shutil
 import keyword
 from typing import Dict, List, Tuple, Union
-import urllib.request
 from pathlib import Path
-from zipfile import ZipFile
-import json
 
 VERSION = "5.15.4"
-PKG_DIR = Path(__file__).parent / "{{cookiecutter.module_name}}"
-URL = ""  # downlo
+PKG_DIR = Path(__file__).parent / "{{cookiecutter.project_slug}}"
 
 
 def get_data(version: str, pkg_dir: str) -> List[Tuple[Dict[str, str], str, str]]:
