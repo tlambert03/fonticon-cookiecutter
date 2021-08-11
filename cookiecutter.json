@@ -6,8 +6,6 @@
   "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
   "project_short_description": "Icon Font extension",
   "pypi_username": "{{ cookiecutter.github_username }}",
-  "license": ["MIT license", "BSD license", "No license"],
-  "_copy_without_render": [
-		".github/workflows/*"
-	]
+  "license": ["MIT", "BSD-3", "No license"],
+  "_copy_without_render": [".github/workflows/*"]
 }

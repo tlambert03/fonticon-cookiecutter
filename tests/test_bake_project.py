@@ -73,38 +73,13 @@ def test_bake_with_defaults(cookies):
 
         found_toplevel_files = [f.name for f in result.project_path.glob("*")]
         assert "setup.cfg" in found_toplevel_files
-        assert "pyrepo" in found_toplevel_files
-        assert "tox.ini" in found_toplevel_files
         assert "tests" in found_toplevel_files
-
-
-def test_bake_and_run_tests(cookies):
-    with bake_in_temp_dir(cookies) as result:
-        assert result.project_path.is_dir()
-        run_inside_dir("pytest", str(result.project_path)) == 0
-        print("test_bake_and_run_tests path", str(result.project_path))
-
-
-def test_bake_withspecialchars_and_run_tests(cookies):
-    """Ensure that a `full_name` with double quotes does not break setup.cfg"""
-    with bake_in_temp_dir(
-        cookies, extra_context={"full_name": 'name "quote" name'}
-    ) as result:
-        assert result.project_path.is_dir()
-        run_inside_dir("pytest", str(result.project_path)) == 0
-
-
-def test_bake_with_apostrophe_and_run_tests(cookies):
-    """Ensure that a `full_name` with apostrophes does not break setup.cfg"""
-    with bake_in_temp_dir(cookies, extra_context={"full_name": "O'connor"}) as result:
-        assert result.project_path.is_dir()
-        run_inside_dir("pytest", str(result.project_path)) == 0
 
 
 def test_bake_selecting_license(cookies):
     license_strings = {
-        "MIT license": "MIT ",
-        "BSD license": "Redistributions of source code must retain the "
+        "MIT": "MIT ",
+        "BSD-3": "Redistributions of source code must retain the "
         + "above copyright notice, this",
     }
     for license, target_string in license_strings.items():
